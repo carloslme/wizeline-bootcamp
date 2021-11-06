@@ -85,3 +85,12 @@ You can get Fernet Key value by running the following:
 
     echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
 ```
+### Run script to upgrade namespace
+Run the following command to give the terminal permission to run the file.
+```
+chmod u+x update_namespace.sh
+```
+Then run this command
+```
+./update_namespace.sh
+```
