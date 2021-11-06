@@ -1,7 +1,4 @@
-week-01/first-deliverable/secrets
-
 .idea/
-.DS_Store
 
 # Local .terraform directories
 **/.terraform/*
@@ -26,6 +23,7 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+*.tfplan
 
 # Include override files you do wish to add to version control using negated pattern
 #
@@ -38,3 +36,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 © 2021 GitHub, Inc.
+
+#kubeconfigfile
+kubeconfig*
