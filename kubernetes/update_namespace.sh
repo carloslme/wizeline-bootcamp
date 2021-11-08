@@ -9,4 +9,4 @@ kubectl create namespace airflow
 echo INFO: adding apache-airflow
 helm repo add apache-airflow https://airflow.apache.org
 echo INFO: installing apache-airflow into the airflow namespace
-helm install airflow apache-airflow/airflow --namespace airflow
+helm install airflow -f airflow-values.yaml apache-airflow/airflow --namespace airflow
