@@ -10,3 +10,4 @@ echo INFO: adding apache-airflow
 helm repo add apache-airflow https://airflow.apache.org
 echo INFO: installing apache-airflow into the airflow namespace
 helm install airflow -f airflow-values.yaml apache-airflow/airflow --namespace airflow
+kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
