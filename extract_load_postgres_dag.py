@@ -14,6 +14,7 @@ dag_params = {
 with DAG(**dag_params) as dag:
 
     create_table = PostgresOperator(
+        postgres_conn_id="cloud_postgres_sql",
         task_id="create_table",
         sql="""CREATE TABLE user_purchase(
                 invoice_number VARCHAR(10) NOT NULL,
