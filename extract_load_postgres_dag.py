@@ -8,7 +8,7 @@ from airflow.operators.postgres_operator import PostgresOperator
 dag_params = {
     "dag_id": "extract_load_dag",
     "start_date": datetime(2019, 10, 7),
-    "schedule_interval": None,
+    "schedule_interval": "@once",
 }
 
 with DAG(**dag_params) as dag:
