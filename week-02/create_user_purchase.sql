@@ -7,4 +7,4 @@ CREATE TABLE user_purchase(
     unit_price NUMERIC (8, 3) NOT NULL,
     customer_id INTEGER NOT NULL,
     country VARCHAR(20) NOT NULL
-):
+);
