@@ -1,4 +1,6 @@
-CREATE TABLE user_purchase(
+CREATE SCHEMA IF NOT EXISTS postgres;
+
+CREATE TABLE IF NOT EXISTS postgres.user_purchase(
     invoice_number VARCHAR(10) NOT NULL,
     stock_code VARCHAR(20) NOT NULL,
     detail VARCHAR(1000) NOT NULL,
