@@ -16,7 +16,8 @@ with DAG(**dag_params) as dag:
     create_table = PostgresOperator(
         postgres_conn_id="cloud_postgres_sql",
         task_id="create_table",
-        sql="""CREATE TABLE user_purchase(
+        sql="""CREATE SCHEMA IF NOT EXISTS postgres;
+            CREATE TABLE IF NOT EXISTS postgres.user_purchase(
                 invoice_number VARCHAR(10) NOT NULL,
                 stock_code VARCHAR(20) NOT NULL,
                 detail VARCHAR(1000) NOT NULL,
