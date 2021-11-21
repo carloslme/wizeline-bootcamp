@@ -19,7 +19,7 @@ def load_data_to_postgres():
     )
 
     # Open Postgres Connection
-    get_postgres_conn = PostgresHook(postgres_conn_id="postgres_default").get_conn()
+    get_postgres_conn = PostgresHook(postgres_conn_id="cloud_postgres_sql").get_conn()
     curr = get_postgres_conn.cursor()
 
     # Load csv into postgres
