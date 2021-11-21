@@ -27,7 +27,7 @@ def load_data_to_postgres():
         tmp.flush()
         with open(tmp.name) as fh:
             curr.copy_expert(
-                "COPY bootcampdb.user_purchase FROM STDIN WITH CSV HEADER", fh
+                "COPY postgres.user_purchase FROM STDIN WITH CSV HEADER", fh
             )
             get_postgres_conn.commit()
 
