@@ -39,25 +39,10 @@ with models.DAG(
     tags=["load"],
 ) as dag:
 
-    load_csv_to_table = PythonOperator(
+    load_data_to_postgres = PythonOperator(
         task_id="load_data_to_postgres",
         provide_context=True,
         python_callable=load_data_to_postgres,
     )
 
-    extract >> load
-
-with DAG(
-    dag_id="csv_on_gcs_to_postgres",
-    default_args=default_args,
-    schedule_interval="@once",
-    catchup=False,
-) as dag:
-
-    load_csv_to_table = PythonOperator(
-        task_id="load_csv_to_table",
-        provide_context=True,
-        python_callable=load_csv,
-    )
-
-    create_schema >> load_csv_to_table
+    load_data_to_postgres
