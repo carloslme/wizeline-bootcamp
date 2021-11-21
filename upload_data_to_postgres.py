@@ -13,7 +13,7 @@ from airflow.utils.dates import days_ago
 def load_data_to_postgres():
 
     # Download the file to a temporary directory and return a file handle
-    gcs_hook = GCSHook()
+    gcs_hook = GCSHook(gcp_conn_id="cloud_storage")
     tmp_file = gcs_hook.provide_file(
         object_url="gs://wizeline-bootcamp-330020/data_source/user_purchase - user_purchase.csv"
     )
