@@ -55,3 +55,8 @@ variable "db_password" {
   description = "Password credentials for root user"
   default     = "dbpassword"
 }
+
+variable "bucket_name" {
+description = "GCS Bucket name. Value should be unique ."
+type        = string
+}
