@@ -14,7 +14,7 @@ from airflow.models import Variable
 PROJECT_ID = Variable.get("PROJECT_ID")
 GCS_BUCKET = Variable.get("STAGING_BUCKET")
 FILENAME = "test_file"
-SQL_QUERY = "select * postgres.from user_purchase;"
+SQL_QUERY = "select * from postgres.user_purchase;"
 
 with models.DAG(
     dag_id="postgres_to_gcs",
