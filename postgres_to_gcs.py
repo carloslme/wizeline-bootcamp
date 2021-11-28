@@ -10,7 +10,6 @@ from airflow.providers.google.cloud.transfers.postgres_to_gcs import (
 )
 from airflow.models import Variable
 
-
 PROJECT_ID = Variable.get("PROJECT_ID")
 GCS_BUCKET = Variable.get("STAGING_BUCKET")
 FILENAME = "test_file"
