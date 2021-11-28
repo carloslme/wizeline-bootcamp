@@ -7,6 +7,8 @@ variable "location" {
 
 variable "region" {
   description = "region"
+  type        = string
+  default     = "us-central1"
 }
 
 
@@ -56,7 +58,13 @@ variable "db_password" {
   default     = "dbpassword"
 }
 
-variable "bucket_name" {
-description = "GCS Bucket name. Value should be unique ."
-type        = string
+# Google Cloud Storage buckets
+variable "bucket_name_raw" {
+  description = "GCS Bucket name. Value should be unique ."
+  type        = string
+}
+
+variable "bucket_name_staging" {
+  description = "GCS Bucket name. Value should be unique ."
+  type        = string
 }
