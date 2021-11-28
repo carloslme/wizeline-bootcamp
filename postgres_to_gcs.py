@@ -13,7 +13,7 @@ from airflow.models import Variable
 
 PROJECT_ID = Variable.get("PROJECT_ID")
 GCS_BUCKET = Variable.get("STAGING_BUCKET")
-FILENAME = "user_purchase.parquet"
+FILENAME = "user_purchase.csv"
 SQL_QUERY = "SELECT * FROM postgres.user_purchase;"
 
 with models.DAG(
@@ -29,7 +29,7 @@ with models.DAG(
         sql=SQL_QUERY,
         bucket=GCS_BUCKET,
         filename=FILENAME,
-        export_format="parquet",
+        export_format="csv",
         gzip=False,
     )
 
