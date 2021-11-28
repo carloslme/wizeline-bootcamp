@@ -11,7 +11,7 @@ from airflow.providers.google.cloud.transfers.postgres_to_gcs import (
 from airflow.models import Variable
 
 
-PROJECT_ID = Variable.get("GCP_PROJECT_ID")
+PROJECT_ID = Variable.get("PROJECT_ID")
 GCS_BUCKET = Variable.get("STAGING_BUCKET")
 FILENAME = "test_file"
 SQL_QUERY = "select * from user_purchase;"
