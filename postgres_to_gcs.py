@@ -29,6 +29,7 @@ with models.DAG(
         sql=SQL_QUERY,
         bucket=GCS_BUCKET,
         filename=FILENAME,
+        export_format="csv",
         gzip=False,
     )
 
