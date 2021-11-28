@@ -33,13 +33,4 @@ with models.DAG(
         gzip=False,
     )
 
-    upload_data_server_side_cursor = PostgresToGCSOperator(
-        task_id="get_data_with_server_side_cursor",
-        sql=SQL_QUERY,
-        bucket=GCS_BUCKET,
-        filename=FILENAME,
-        gzip=False,
-        use_server_side_cursor=True,
-    )
-
     upload_data
