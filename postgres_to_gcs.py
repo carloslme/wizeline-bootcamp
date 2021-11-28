@@ -24,7 +24,7 @@ with models.DAG(
     tags=["postgres", "gcs"],
 ) as dag:
     upload_data = PostgresToGCSOperator(
-        postgres_conn_id="google_cloud_default",
+        postgres_conn_id="cloud_postgres_sql",
         task_id="get_data",
         sql=SQL_QUERY,
         bucket=GCS_BUCKET,
