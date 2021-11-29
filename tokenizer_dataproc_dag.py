@@ -18,7 +18,7 @@ default_args = {
 CLUSTER_NAME = "dataproc-cluster"
 REGION = "us-central1"
 PROJECT_ID = "wizeline-bootcamp-330020"
-PYSPARK_URI = "gs://wizeline-bootcamp-330020/pyspark_tokenyzer.py"
+PYSPARK_URI = "gs://wizeline-bootcamp-330020/pyspark_tokenizer.py"
 
 # Cluster definition
 CLUSTER_CONFIG = {
