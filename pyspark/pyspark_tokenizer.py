@@ -4,6 +4,8 @@ from pyspark.ml.feature import StopWordsRemover
 from pyspark.sql.functions import col, udf, when
 from pyspark.sql.types import BooleanType, IntegerType
 
+spark = SparkSession.builder.getOrCreate()
+
 df = spark.read.options(header=True).csv("gs://raw-layer-330021/movie_review.csv")
 
 # Tokenizing the words
