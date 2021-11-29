@@ -48,6 +48,7 @@ with DAG(
 ) as dag:
 
     create_cluster = DataprocCreateClusterOperator(
+        gcp_conn_id="dataproc_conn",
         task_id="create_cluster",
         project_id=PROJECT_ID,
         cluster_config=CLUSTER_CONFIG,
@@ -56,10 +57,15 @@ with DAG(
     )
 
     pyspark_task = DataprocSubmitJobOperator(
-        task_id="pyspark_task", job=PYSPARK_JOB, region=REGION, project_id=PROJECT_ID
+        gcp_conn_id="dataproc_conn",
+        task_id="pyspark_task",
+        job=PYSPARK_JOB,
+        region=REGION,
+        project_id=PROJECT_ID,
     )
 
     delete_cluster = DataprocDeleteClusterOperator(
+        gcp_conn_id="dataproc_conn",
         task_id="delete_cluster",
         project_id=PROJECT_ID,
         cluster_name=CLUSTER_NAME,
