@@ -13,3 +13,11 @@ CREATE TABLE IF NOT EXISTS dwh.user_behavior_metric(
     review_count INTEGER NOT NULL,
     insert_date TIMESTAMP NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS dwh.user_behavior_metric(
+    customer STRING NOT NULL,
+    amount_spent STRING NOT NULL,
+    review_score STRING NOT NULL,
+    review_count STRING NOT NULL,
+    insert_date TIMESTAMP NOT NULL
+);
