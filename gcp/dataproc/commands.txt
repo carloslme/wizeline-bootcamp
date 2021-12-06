@@ -1,0 +1,5 @@
+-- Run Dataproc job
+gcloud dataproc jobs submit pyspark user_behavior.py \
+    --cluster=dataproc-cluster \
+    --region=us-central1 \
+    --jars=gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar
