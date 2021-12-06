@@ -1,9 +1,4 @@
 from pyspark.sql import SparkSession
-from google.cloud.storage import client
-from google.cloud import bigquery
-from google.cloud.bigquery import SchemaField
-import io
-import pandas as pd
 
 spark = SparkSession.builder.getOrCreate()
 
@@ -21,7 +16,7 @@ df_user_purchase = spark.read.options(header=True).csv(
 df_reviews.createOrReplaceTempView("reviews")
 df_user_purchase.createOrReplaceTempView("user_purchase")
 
-# Implement logic
+# Implement logicxs
 logic = spark.sql(
     """
     SELECT 
@@ -32,34 +27,13 @@ logic = spark.sql(
       , CAST(current_date() AS STRING) as insert_date
     FROM reviews AS r
     LEFT JOIN user_purchase AS up ON r.user_id == up.customer_id
-    GROUP BY 1
+    GROUP BY 1;
     """
 )
 
-# Convert to Pandas dataframe
-spark.conf.set("spark.sql.execution.arrow.enabled", "true")
-pd_df = logic.toPandas()
-
-
-# Construct a BigQuery client object to send dataframe
-client = bigquery.Client()
-table_id = "wizeline-bootcamp-330020.dwh.user_behavior_metric"
-
-job_config = bigquery.LoadJobConfig(
-    schema=[
-        SchemaField("customer", "STRING", "REQUIRED", None, ()),
-        SchemaField("amount_spent", "STRING", "REQUIRED", None, ()),
-        SchemaField("review_score", "STRING", "REQUIRED", None, ()),
-        SchemaField("review_count", "STRING", "REQUIRED", None, ()),
-        SchemaField("insert_date", "STRING", "REQUIRED", None, ()),
-    ],
-    source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-)
-
-# Write dataframe
-job = client.load_table_from_dataframe(
-    pd_df, table_id, job_config=job_config
-)  # Make an API request.
-job.result()  # Wait for the job to complete.
-
-table = client.get_table(table_id)  # Make an API request.
+# Saving the data to BigQuery
+logic.write.format('bigquery') \
+  .mode("append") \
+  .option("temporaryGcsBucket","wizeline-bootcamp-330020") \
+  .option('table', 'dwh.user_behavior_metric') \
+  .save()
