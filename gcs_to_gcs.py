@@ -16,11 +16,11 @@ GCS_BUCKET_DESTINATION = Variable.get("RAW_BUCKET")
 OBJECT = Variable.get("FILENAME")
 
 with models.DAG(
-    dag_id="postgres_to_gcs",
+    dag_id="gcs_to_gcs",
     schedule_interval="@once",  # Override to match your needs
     start_date=datetime(2021, 1, 1),
     catchup=False,
-    tags=["postgres", "gcs"],
+    tags=["gcs"],
 ) as dag:
     copy_single_file = GCSToGCSOperator(
         task_id="copy_single_gcs_file",
