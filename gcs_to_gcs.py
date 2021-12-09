@@ -27,7 +27,7 @@ with models.DAG(
         source_bucket=GCS_BUCKET_SOURCE,
         source_object=OBJECT,
         destination_bucket=GCS_BUCKET_DESTINATION,  # If not supplied the source_bucket value will be used
-        destination_object="user_purchase - user_purchase.csv",  # If not supplied the source_object value will be used
+        destination_object="movie_review.csv",  # If not supplied the source_object value will be used
     )
 
     copy_single_file
